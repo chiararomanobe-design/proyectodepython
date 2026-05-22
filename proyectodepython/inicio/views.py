@@ -26,7 +26,7 @@ def crear_posteo(request):
 
 def registro(request):
     if request.method == "POST":
-        form = RegistrationForm(request.POST)
+        form = RegistroForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, "Usuario creado correctamente. Ya puedes iniciar sesion.")

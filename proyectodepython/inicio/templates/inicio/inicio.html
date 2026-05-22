@@ -6,16 +6,34 @@
 </head>
 <body>
     <h1>Bienvenido al blog</h1>
-    <p>Este es mi proyecto final hecho con Django.</p>
-    <p>¿No tenes cuenta? <a href="/registro/">Registrate aca</a></p>
+    {% if not user.is_authenticated %}
+        <p>¿No tenes cuenta? <a href="/registro/">Registrate aca</a></p>
+    {% endif %}
+    
 
-    <nav>
-        <a href="/">Inicio</a>
-        <a href="/crear/">Crear posteo</a>
-        <a href="/login/">Iniciar sesion</a>
-        <a href="/admin/">Admin</a>
+    
+    <nav style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <a href="/">Inicio</a>
+            <a href="/crear/">Crear posteo</a>
+            <a href="/admin/">Admin</a>
+        </div>
 
+        <div>
+            {% if user.is_authenticated %}
+                <span>{{ user.username }}</span>
+
+                <form method="POST" action="/logout/" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit">Cerrar sesion</button>
+                </form>
+            {% else %}
+                <a href="/login/">Iniciar sesion</a>
+                <a href="/registro/">Registrarse</a>
+            {% endif %}
+        </div>
     </nav>
+    
 
     <h2>Posteos recientes</h2>
 
