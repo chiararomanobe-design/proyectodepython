@@ -1,10 +1,78 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Blog{% endblock %}</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #222;
+            margin: 0;
+        }
+
+        nav {
+            background-color: #1f2937;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a,
+        nav span {
+            color: white;
+            margin-right: 15px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        main {
+            width: 80%;
+            max-width: 900px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        article {
+            background-color: #f9fafb;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            max-width: 600px;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        textarea {
+            min-height: 120px;
+        }
+    </style>
 </head>
 <body>
+    
     <nav style="display: flex; justify-content: space-between; align-items: center;">
         <div>
             <a href="/">Inicio</a>
@@ -37,8 +105,9 @@
             <p style="color: green;">{{ message }}</p>
         {% endfor %}
     {% endif %}
-
+<main>
     {% block content %}
     {% endblock %}
+</main>
 </body>
 </html>
