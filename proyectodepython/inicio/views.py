@@ -28,7 +28,7 @@ def crear_posteo(request):
 def eliminar_posteo(request, posteo_id):
     posteo = get_object_or_404(Posteo, id=posteo_id)
 
-    if posteo.author == request.user:
+    if posteo.autor == request.user:
         posteo.delete()
 
     return redirect("inicio")
