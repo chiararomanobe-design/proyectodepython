@@ -92,6 +92,18 @@ http://127.0.0.1:8000/
 ```
 
 El despliegue publico queda pendiente para una etapa final. Puede realizarse utilizando servicios como Render, Railway o PythonAnywhere.
+Y agregá:
+
+```md
+## Despliegue
+
+El despliegue se realizo en PythonAnywhere utilizando:
+- Repositorio de GitHub.
+- Entorno virtual.
+- Archivo requirements.txt.
+- Configuracion WSGI.
+- Migraciones de Django.
+
 
 ## Repositorio
 
