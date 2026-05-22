@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Posteo
-from .forms import PosteoForm, RegistroForm
+from .forms import PosteoForm, RegistroForm, PerfilForm
 
 def inicio(request):
     posteos = Posteo.objects.all().order_by("-fecha_de_creacion")
@@ -48,3 +48,16 @@ def registro(request):
 
     return render(request, "registration/registro.html", {"form": form})
 
+@login_required 
+def perfil(request):
+    if request.method == "POST":
+        form = PerfilForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Perfil actualizado correctamente:")
+            return redirect("perfil")
+
+    else:
+        form = PerfilForm(instance=request.user)
+
+    return render(request, "registration/perfil.html", {"form": form})
