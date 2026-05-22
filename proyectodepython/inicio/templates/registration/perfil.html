@@ -1,22 +1,9 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Mi perfil</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Mi perfil - Blog{% endblock %}
+
+{% block content %}
     <h1>Mi perfil</h1>
-    {% if messages %}
-        {% for message in messages %}
-            <p style="color: blueviolet;">{{ message }}</p>
-        {% endfor %}
-    {% endif %}
-    <nav>
-        <a href="/">Inicio</a>
-        <a href="/crear/">Crear posteo</a>
-        <a href="/perfil/">Mi perfil</a>
-        <a href="/admin/">Admin</a>
-    </nav>
 
     <p>Usuario: {{ user.username }}</p>
 
@@ -25,5 +12,4 @@
         {{ form.as_p }}
         <button type="submit">Guardar cambios</button>
     </form>
-</body>
-</html>
+{% endblock %}

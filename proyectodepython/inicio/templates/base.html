@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Blog{% endblock %}</title>
+</head>
+<body>
+    <nav style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <a href="/">Inicio</a>
+            <a href="/crear/">Crear posteo</a>
+            <a href="/contacto/">Contacto</a>
+            <a href="/acerca/">Acerca de</a>
+            <a href="/admin/">Admin</a>
+        </div>
+
+        <div>
+            {% if user.is_authenticated %}
+                <span>Hola, {{ user.username }}</span>
+                <a href="/perfil/">Mi perfil</a>
+
+                <form method="POST" action="/logout/" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit">Cerrar sesion</button>
+                </form>
+            {% else %}
+                <a href="/login/">Iniciar sesion</a>
+                <a href="/registro/">Registrarse</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <hr>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: green;">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

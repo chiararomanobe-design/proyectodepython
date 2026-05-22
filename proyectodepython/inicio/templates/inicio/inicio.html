@@ -1,38 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Blog</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Inicio - Blog{% endblock %}
+
+{% block content %}
     <h1>Bienvenido al blog</h1>
-
-
-    <nav style="display: flex; justify-content: space-between; align-items: center;">
-        <div>
-            <a href="/">Inicio</a>
-            <a href="/crear/">Crear posteo</a>
-            <a href="/contacto/">Contacto</a>
-            <a href="/admin/">Admin</a>
-            <a href="/acerca/">Acerca de</a>
-        </div>
-
-        <div>
-            {% if user.is_authenticated %}
-                <span>{{ user.username }}</span>
-                <a href="/perfil/">Mi perfil</a>
-
-                <form method="POST" action="/logout/" style="display: inline;">
-                    {% csrf_token %}
-                    <button type="submit">Cerrar sesion</button>
-                </form>
-            {% else %}
-                <a href="/login/">Iniciar sesion</a>
-                <a href="/registro/">Registrarse</a>
-            {% endif %}
-        </div>
-    </nav>
-    
+    <p>Este es mi proyecto final hecho con Django.</p>
 
     <h2>Posteos recientes</h2>
 
@@ -56,6 +28,4 @@
     {% empty %}
         <p>Todavia no hay posteos publicados.</p>
     {% endfor %}
-
-</body>
-</html>
+{% endblock %}

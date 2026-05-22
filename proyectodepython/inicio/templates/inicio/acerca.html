@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Acerca de</title>
-</head>
-<body>
-    <h1>Acerca de este blog</h1>
+{% extends 'base.html' %}
 
-    <nav>
-        <a href="/">Inicio</a>
-        <a href="/crear/">Crear posteo</a>
-        <a href="/contacto/">Contacto</a>
-        <a href="/acerca/">Acerca de</a>
-        <a href="/admin/">Admin</a>
-    </nav>
+{% block title %}Acerca de - Blog{% endblock %}
+
+{% block content %}
+    <h1>Acerca de este blog</h1>
 
     <p>
         Este proyecto es un blog desarrollado con Django como entrega final.
@@ -25,5 +15,4 @@
         El objetivo del proyecto es aplicar conceptos basicos de desarrollo web con Python,
         Django, base de datos, autenticacion, templates y formularios.
     </p>
-</body>
-</html>
+{% endblock %}

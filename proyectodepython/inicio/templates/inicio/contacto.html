@@ -1,29 +1,13 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Contacto</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Contacto - Blog{% endblock %}
+
+{% block content %}
     <h1>Contacto</h1>
-
-    <nav>
-        <a href="/">Inicio</a>
-        <a href="/crear/">Crear posteo</a>
-        <a href="/contacto/">Contacto</a>
-        <a href="/admin/">Admin</a>
-    </nav>
-
-    {% if messages %}
-        {% for message in messages %}
-            <p style="color: green;">{{ message }}</p>
-        {% endfor %}
-    {% endif %}
 
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Enviar</button>
     </form>
-</body>
-</html>
+{% endblock %}

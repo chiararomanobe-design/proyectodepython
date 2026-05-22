@@ -1,22 +1,13 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Registro</title>
-</head>
-<body>
-    <h1>Crear cuenta</h1>
+{% extends 'base.html' %}
 
-    <nav>
-        <a href="/">Inicio</a>
-        <a href="/login/">Iniciar sesion</a>
-        <a href="/admin/">Admin</a>
-    </nav>
+{% block title %}Registro - Blog{% endblock %}
+
+{% block content %}
+    <h1>Crear cuenta</h1>
 
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Registrarme</button>
     </form>
-</body>
-</html>
+{% endblock %}
