@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Posteo
@@ -24,6 +24,17 @@ def crear_posteo(request):
 
     return render(request, 'inicio/crear_posteo.html', {"form": form})
 
+@login_required
+def eliminar_posteo(request, posteo_id):
+    posteo = get_object_or_404(Posteo, id=posteo_id)
+
+    if posteo.author == request.user:
+        posteo.delete()
+
+    return redirect("inicio")
+
+
+
 def registro(request):
     if request.method == "POST":
         form = RegistroForm(request.POST)
@@ -36,3 +47,4 @@ def registro(request):
         form = RegistroForm()
 
     return render(request, "registration/registro.html", {"form": form})
+

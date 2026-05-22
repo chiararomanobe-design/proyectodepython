@@ -6,10 +6,6 @@
 </head>
 <body>
     <h1>Bienvenido al blog</h1>
-    {% if not user.is_authenticated %}
-        <p>¿No tenes cuenta? <a href="/registro/">Registrate aca</a></p>
-    {% endif %}
-    
 
     
     <nav style="display: flex; justify-content: space-between; align-items: center;">
@@ -45,6 +41,13 @@
                 Publicado por {{ posteo.autor.username }}
                 el {{ posteo.fecha_de_creacion|date:"d/m/Y H:i" }}
             </small>
+
+            {% if user == posteo.autor %}
+                <form method="POST" action="{% url 'eliminar_posteo' posteo.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Eliminar</button>
+                </form>
+            {% endif %}
         </article>
         <hr>
     {% empty %}
