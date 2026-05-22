@@ -74,4 +74,8 @@ def contacto(request):
         form= ContactoForm()
 
     return render(request, "inicio/contacto.html", {"form":form})
+
+
+def acerca(request):
+    return render(request, "inicio/acerca.html")
     
