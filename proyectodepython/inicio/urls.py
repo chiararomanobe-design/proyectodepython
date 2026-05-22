@@ -1,11 +1,12 @@
 from django.urls import path
-from .views import inicio, crear_posteo, registro, eliminar_posteo, perfil
+from .views import inicio, crear_posteo, registro, eliminar_posteo, perfil, contacto
 
 urlpatterns = [
     path('',inicio, name="inicio"),
     path("crear/", crear_posteo, name="crear_posteo"),
     path("registro/", registro, name="registro"),
     path("eliminar/<int:posteo_id>/", eliminar_posteo, name="eliminar_posteo"),
-    path("perfil/", perfil, name="perfil")
+    path("perfil/", perfil, name="perfil"),
+    path("contacto/", contacto, name="contacto"),
 
 ]
