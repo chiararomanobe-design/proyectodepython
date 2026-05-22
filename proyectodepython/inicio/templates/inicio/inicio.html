@@ -12,5 +12,22 @@
         <a href="/">Inicio</a>
         <a href="/admin/">Admin</a>
     </nav>
+
+    <h2>Posteos recientes</h2>
+
+    {% for posteo in posteos %}
+        <article>
+            <h3>{{ posteo.titulo }}</h3>
+            <p>{{ posteo.contenido }}</p>
+            <small>
+                Publicado por {{ posteo.autor.username }}
+                el {{ posteo.fecha_de_creacion|date:"d/m/Y H:i" }}
+            </small>
+        </article>
+        <hr>
+    {% empty %}
+        <p>Todavia no hay posteos publicados.</p>
+    {% endfor %}
+
 </body>
 </html>

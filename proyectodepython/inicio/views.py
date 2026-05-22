@@ -1,6 +1,7 @@
-from django.http import HttpResponse
-
 from django.shortcuts import render
+from .models import Posteo
 
 def inicio(request):
-    return render(request, 'inicio/inicio.html')
+    posteos = Posteo.objects.all().order_by("-fecha_de_creacion")
+    return render(request, 'inicio/inicio.html', {"posteos" : posteos})
+
